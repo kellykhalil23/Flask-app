@@ -8,7 +8,7 @@ import os
 # Get the base directory of the application
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
-# path to db
+
 db_path = os.path.join(base_dir, "DB", "database.db")
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
