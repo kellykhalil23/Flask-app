@@ -9,11 +9,11 @@ def create_books_table(db_file):
 
         # Create the books table
         cursor.execute('''
-            CREATE TABLE books (
-                ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Title VARCHAR(255) NOT NULL,
+            CREATE TABLE Books (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title VARCHAR(255) NOT NULL,
                 author VARCHAR(255) NOT NULL,
-                publicationyear INTEGER NOT NULL
+                publication_year INTEGER NOT NULL
             );
         ''')
 

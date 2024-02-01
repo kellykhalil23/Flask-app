@@ -16,8 +16,8 @@
     <ul class="list-group">
         {% for book in books %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>Title: {{ book.Title }} - Author: {{ book.author }}</span>
-                <span>Publication Year: {{ book.publicationyear }}</span>
+                <span>Title: {{ book.title }} - Author: {{ book.author }}</span>
+                <span>Publication Year: {{ book.publication_year }}</span>
             </li>
         {% endfor %}
     </ul>
