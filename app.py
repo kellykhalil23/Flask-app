@@ -17,33 +17,33 @@ fake = Faker()
 
 app.secret_key = 'secret_key'
 
-class Users(db.Model):
-    ID = db.Column(db.Integer, primary_key=True)
-    Firstname = db.Column(db.String(50), nullable=False)
-    Lastname = db.Column(db.String(50), nullable=False)
-    Email = db.Column(db.String(120), unique=True, nullable=False)
-    Role = db.Column(db.String(50), nullable=False, default='user')  
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    author = db.Column(db.String(50), nullable=False)
+    publication_year = db.Column(db.Integer, nullable=False)
+   
 
 
-@app.route('/')
+@app.route('/books')
 def index():
-    users = Users.query.all()
-    return render_template('index.html', users=users)
+    books = Book.query.all()
+    return render_template('books.html', books=books)
 
-@app.route('/add_user', methods=['GET', 'POST'])
-def add_user():
+@app.route('/add_book', methods=['GET', 'POST'])
+def add_book():
     if request.method == 'POST':
-        First_name = request.form['firstname']
-        Last_name = request.form['lastname']
-        Email = request.form['email']
-        
+        title = request.form['title']
+        publication_year = request.form['publication_year']
+        author = request.form['author']
+    
 
-        new_user = Users(Firstname=First_name, Lastname=Last_name, Email=Email)
-        db.session.add(new_user)
+        new_book = Book(title=title, author=author, publication_year=publication_year)
+        db.session.add(new_book)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('book_list'))
 
-    return render_template('add_user.html')
+    return render_template('add_book.html')
 
 
 if __name__ == '__main__':

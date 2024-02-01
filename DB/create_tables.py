@@ -1,25 +1,25 @@
 import sqlite3
 
-def create_users_table(db_file):
+
+def create_books_table(db_file):
     try:
         # Connect to the SQLite database
         conn = sqlite3.connect(db_file)
         cursor = conn.cursor()
 
-        # Create the users table
+        # Create the books table
         cursor.execute('''
-            CREATE TABLE Users (
+            CREATE TABLE books (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Firstname VARCHAR(255) NOT NULL,
-                Lastname VARCHAR(255) NOT NULL,
-                Email VARCHAR(255) NOT NULL UNIQUE,
-                Role VARCHAR(50) NOT NULL DEFAULT 'user' -- Default role is set to 'user'
+                Title VARCHAR(255) NOT NULL,
+                author VARCHAR(255) NOT NULL,
+                publicationyear INTEGER NOT NULL
             );
         ''')
 
         # Commit the changes (creating the table)
         conn.commit()
-        print("Table 'users' created successfully.")
+        print("Table 'books' created successfully.")
 
     except sqlite3.Error as e:
         print("SQLite error:", e)
@@ -32,5 +32,5 @@ def create_users_table(db_file):
 # Specify the name of your SQLite database file
 db_file = "database.db"
 
-# Call the function to create the 'Users' table
-create_users_table(db_file)
+# Call the function to create the 'books' table
+create_books_table(db_file)

@@ -1,6 +1,6 @@
 import sqlite3  
 
-def create_database(db_file):
+def create_books_database(db_file):
     try:
         # Connect to the SQLite database
         conn = sqlite3.connect(db_file)
@@ -17,4 +17,8 @@ def create_database(db_file):
         if conn:
             conn.close()
 
-create_database("database.db")
+# Specify the name of your SQLite database file
+db_file = "database.db"
+
+# Call the function to create the SQLite database
+create_books_database(db_file)
